@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,8 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', 'Api\LoginControladr@login');
+Route::post('loginForm/', 'LoginControlador@login');
 
-Route::middleware('auth:api')->post('/logout', 'Api\LoginControlador@logout');
+
+Route::middleware('auth:api')->post('/logout', 'LoginControlador@logout');
+
+Route::post('/reportAssign', 'LoginControlador@reportAssign');
+
+Route::post('/registerUser', 'LoginControlador@registerUser');
+
+Route::get('/userReports/{id_user}', 'LoginControlador@userReports');
 
 
